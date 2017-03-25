@@ -6,6 +6,11 @@ public class Tile implements Comparable{
     private int right;
 
     public Tile(int left, int right) {
+        if(left > right){
+            int tmp = left;
+            left = right;
+            right = tmp;
+        }
         this.right = right;
         this.left = left;
     }
@@ -25,13 +30,14 @@ public class Tile implements Comparable{
 
         Tile tile = (Tile) o;
 
-        return right == tile.right && left == tile.left || (right == tile.left && left == tile.right);
+        if (left != tile.left) return false;
+        return right == tile.right;
     }
 
     @Override
     public int hashCode() {
-        int result = right;
-        result = 31 * result + 31 * left;
+        int result = left;
+        result = 31 * result + right;
         return result;
     }
 
