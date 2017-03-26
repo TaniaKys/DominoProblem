@@ -1,4 +1,4 @@
-package com.starr.domino;
+package com.starr.domino.xtrash;
 
 
 import com.starr.domino.tile.Tile;

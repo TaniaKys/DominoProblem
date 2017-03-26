@@ -6,7 +6,6 @@ public class Tile implements Comparable<Tile> {
         WITH_FLIP,
         WITHOUT_FLIP,
         NONE
-
     }
 
     private int left;

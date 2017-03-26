@@ -41,12 +41,12 @@ public class BruteForceResolver implements Resolver {
                 iteration++;
             }
         }
-        current.setBusy(true);
         //TODO: delete
         System.out.println(temp);
         if(temp.size() > result.size()){
             result = new ArrayList<Tile>(temp);
         }
+        current.setBusy(false);
         temp.remove(current);
     }
 

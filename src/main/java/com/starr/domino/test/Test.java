@@ -1,6 +1,8 @@
-package com.starr.domino;
+package com.starr.domino.test;
 
 
+import com.starr.domino.ConsoleReader;
+import com.starr.domino.xtrash.DominoMatrix;
 import com.starr.domino.resolver.BruteForceResolver;
 import com.starr.domino.set.DominoSet;
 import com.starr.domino.tile.Tile;
