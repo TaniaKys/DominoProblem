@@ -1,6 +1,8 @@
 package com.starr.domino;
 
 
+import com.starr.domino.util.Dots;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -15,9 +17,9 @@ public class CountReader {
     private BufferedReader consoleReader;
     private int maxCount;
 
-    public CountReader(int minDots, int maxDots) {
+    public CountReader() {
         consoleReader = new BufferedReader(new InputStreamReader(System.in));
-        maxCount = calculateMaxCount(minDots, maxDots);
+        maxCount = calculateMaxCount();
     }
 
     private int readCountFromConsole() {
@@ -50,8 +52,8 @@ public class CountReader {
         return count;
     }
 
-    private int calculateMaxCount(int min, int max) {
-        max -= min;
+    private int calculateMaxCount() {
+        int max = Dots.MAX - Dots.MIN;
         return ((max * max + (3 * max) + 2) / 2);
     }
 
