@@ -4,6 +4,7 @@ public class Tile implements Comparable<Tile>{
 
     private int left;
     private int right;
+    private boolean isFlipped;
 
     public Tile(int left, int right) {
         if(left > right){
@@ -23,6 +24,10 @@ public class Tile implements Comparable<Tile>{
         return left;
     }
 
+    public boolean isFlipped() {
+        return isFlipped;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,14 +35,12 @@ public class Tile implements Comparable<Tile>{
 
         Tile tile = (Tile) o;
 
-        if (left != tile.left) return false;
-        return right == tile.right;
+        return right == tile.right && left == tile.left || (right == tile.left && left == tile.right);
     }
 
     @Override
     public int hashCode() {
-        int result = left;
-        result = 31 * result + right;
+        int result = 31 * left + 31 * right;
         return result;
     }
 
@@ -60,6 +63,13 @@ public class Tile implements Comparable<Tile>{
             return -1;
         }
         return 0;
+    }
+
+    public void flip(){
+        int tmp = left;
+        left = right;
+        right = tmp;
+        isFlipped = !isFlipped;
     }
 
 }
