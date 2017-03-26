@@ -24,6 +24,7 @@ public class BruteForceResolver implements Resolver {
         }
         //TODO: delete
         System.out.println(iteration);
+        //TODO: print unused dominoes
         return result;
     }
 

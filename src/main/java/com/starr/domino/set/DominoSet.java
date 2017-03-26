@@ -31,6 +31,10 @@ public class DominoSet {
         return randSet.subList(0, count);
     }
 
+    public int getSize(){
+        return set.size();
+    }
+
     @Override
     public String toString() {
         return "DominoSet{" +

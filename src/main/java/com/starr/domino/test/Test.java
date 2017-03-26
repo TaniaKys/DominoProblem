@@ -1,7 +1,7 @@
 package com.starr.domino.test;
 
 
-import com.starr.domino.ConsoleReader;
+import com.starr.domino.CountReader;
 import com.starr.domino.xtrash.DominoMatrix;
 import com.starr.domino.resolver.BruteForceResolver;
 import com.starr.domino.set.DominoSet;
@@ -20,7 +20,7 @@ public class Test {
         DominoSet dominoSet = new DominoSet(MIN, MAX);
         System.out.println(dominoSet);
 
-        ConsoleReader consoleReader = new ConsoleReader();
+        //CountReader consoleReader = new CountReader();
         //int count = consoleReader.readCount();
 
 
