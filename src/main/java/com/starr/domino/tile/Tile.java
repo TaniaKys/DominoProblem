@@ -2,13 +2,20 @@ package com.starr.domino.tile;
 
 public class Tile implements Comparable<Tile> {
 
+    public enum Connection {
+        WITH_FLIP,
+        WITHOUT_FLIP,
+        NONE
+
+    }
+
     private int left;
     private int right;
     private boolean isFlipped;
     private boolean isBusy;
 
     public Tile(int left, int right) {
-        if(left > right){
+        if (left > right) {
             int tmp = left;
             left = right;
             right = tmp;
@@ -44,7 +51,7 @@ public class Tile implements Comparable<Tile> {
         isBusy = busy;
     }
 
-    public Tile flip(){
+    public Tile flip() {
         int tmp = left;
         left = right;
         right = tmp;
@@ -52,8 +59,8 @@ public class Tile implements Comparable<Tile> {
         return this;
     }
 
-    public void resetState(){
-        if(left > right){
+    public void resetState() {
+        if (left > right) {
             int tmp = left;
             left = right;
             right = tmp;
@@ -63,29 +70,29 @@ public class Tile implements Comparable<Tile> {
     }
 
     public int compareTo(Tile o) {
-        if(left > o.left){
+        if (left > o.left) {
             return 1;
         }
-        if(left < o.left){
+        if (left < o.left) {
             return -1;
         }
-        if(right > o.right){
+        if (right > o.right) {
             return 1;
         }
-        if(right < o.right){
+        if (right < o.right) {
             return -1;
         }
         return 0;
     }
 
-    public int isSuits(Tile other) {
+    public Connection connectedWith(Tile other) {
         if (right == other.getLeft()) {
-            return 1;
+            return Connection.WITHOUT_FLIP;
         }
         if (right == other.getRight()) {
-            return 2;
+            return Connection.WITH_FLIP;
         }
-        return 0;
+        return Connection.NONE;
     }
 
     @Override
@@ -105,7 +112,6 @@ public class Tile implements Comparable<Tile> {
 
     @Override
     public String toString() {
-        return "["+left+"|"+right+"]";
+        return "[" + left + "|" + right + "]";
     }
-
 }

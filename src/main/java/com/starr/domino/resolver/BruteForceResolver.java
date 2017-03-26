@@ -32,10 +32,10 @@ public class BruteForceResolver implements Resolver {
         temp.add(new Tile(current));
         for (Tile tile : origin) {
             if (!tile.isBusy()) {
-                int suits = current.isSuits(tile);
-                if (suits == 1) {
+                Tile.Connection connection = current.connectedWith(tile);
+                if (connection.equals(Tile.Connection.WITHOUT_FLIP)) {
                     buildChain(tile);
-                } else if (suits == 2) {
+                } else if (connection.equals(Tile.Connection.WITH_FLIP)) {
                     buildChain(tile.flip());
                 }
                 iteration++;
