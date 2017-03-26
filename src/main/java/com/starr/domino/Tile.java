@@ -5,6 +5,7 @@ public class Tile implements Comparable<Tile>{
     private int left;
     private int right;
     private boolean isFlipped;
+    private boolean isBusy;
 
     public Tile(int left, int right) {
         if(left > right){
@@ -28,25 +29,30 @@ public class Tile implements Comparable<Tile>{
         return isFlipped;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Tile tile = (Tile) o;
-
-        return right == tile.right && left == tile.left || (right == tile.left && left == tile.right);
+    public boolean isBusy() {
+        return isBusy;
     }
 
-    @Override
-    public int hashCode() {
-        int result = 31 * left + 31 * right;
-        return result;
+    public void setBusy(boolean busy) {
+        isBusy = busy;
     }
 
-    @Override
-    public String toString() {
-        return "["+left+"|"+right+"]";
+    public Tile flip(){
+        int tmp = left;
+        left = right;
+        right = tmp;
+        isFlipped = !isFlipped;
+        return this;
+    }
+
+    public void resetState(){
+        if(left > right){
+            int tmp = left;
+            left = right;
+            right = tmp;
+        }
+        isFlipped = false;
+        isBusy = false;
     }
 
     public int compareTo(Tile o) {
@@ -65,11 +71,34 @@ public class Tile implements Comparable<Tile>{
         return 0;
     }
 
-    public void flip(){
-        int tmp = left;
-        left = right;
-        right = tmp;
-        isFlipped = !isFlipped;
+    public int isSuits(Tile other) {
+        if (right == other.getLeft()) {
+            return 1;
+        }
+        if (right == other.getRight()) {
+            return 2;
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tile tile = (Tile) o;
+
+        return right == tile.right && left == tile.left || (right == tile.left && left == tile.right);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * left + 31 * right;
+    }
+
+    @Override
+    public String toString() {
+        return "["+left+"|"+right+"]";
     }
 
 }
