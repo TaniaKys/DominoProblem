@@ -1,6 +1,8 @@
 package com.starr.domino;
 
 
+import com.starr.domino.tile.Tile;
+
 import java.util.*;
 
 public class DominoMatrix {

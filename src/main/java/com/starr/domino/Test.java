@@ -4,6 +4,8 @@ package com.starr.domino;
 import com.starr.domino.resolver.BruteForceResolver;
 import com.starr.domino.service.TileService;
 import com.starr.domino.service.TileServiceImpl;
+import com.starr.domino.tile.AbstractTile;
+import com.starr.domino.tile.Tile;
 
 import java.util.*;
 
@@ -16,7 +18,7 @@ public class Test {
     //TODO: check for count (28 allowed)
     public static void main(String[] args) {
         TileService service = new TileServiceImpl();
-        List<Tile> tiles = service.generateDominoSet(MIN, MAX);
+        List<AbstractTile> tiles = service.generateDominoSet(MIN, MAX);
         System.out.println(tiles);
 
         ConsoleReader consoleReader = new ConsoleReader();
@@ -43,7 +45,7 @@ public class Test {
 
         //System.out.println(testList);
 
-        List<Tile> testList2 = new ArrayList<Tile>();
+        List<AbstractTile> testList2 = new ArrayList<AbstractTile>();
         testList2.add(new Tile(1, 2));
         testList2.add(new Tile(2, 3));
         testList2.add(new Tile(1, 3));
@@ -51,9 +53,9 @@ public class Test {
         System.out.println(testList2);
 
         BruteForceResolver bruteForceResolver = new BruteForceResolver();
-        Set<List<Tile>> result = bruteForceResolver.resolve(testList2);
+        Set<List<AbstractTile>> result = bruteForceResolver.resolve(testList2);
         System.out.println("RESULT");
-        for(List<Tile> list : result){
+        for(List<AbstractTile> list : result){
             System.out.println(list);
         }
     }

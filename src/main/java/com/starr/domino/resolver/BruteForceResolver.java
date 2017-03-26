@@ -1,23 +1,23 @@
 package com.starr.domino.resolver;
 
 
-import com.starr.domino.Tile;
+import com.starr.domino.tile.AbstractTile;
 
 import java.util.*;
 
 public class BruteForceResolver implements Resolver {
 
-    private List<Tile> temp = new ArrayList<Tile>();
-    private List<Tile> origin;
-    private Set<List<Tile>> result = new HashSet<List<Tile>>();
+    private List<AbstractTile> temp = new ArrayList<AbstractTile>();
+    private List<AbstractTile> origin;
+    private Set<List<AbstractTile>> result = new HashSet<List<AbstractTile>>();
 
     private int iteration = 0;
     private int longestSize = 0;
 
-    public Set<List<Tile>> resolve(List<Tile> list) {
+    public Set<List<AbstractTile>> resolve(List<AbstractTile> list) {
         // TODO: check for null
         origin = list;
-        for (Tile tile : origin) {
+        for (AbstractTile tile : origin) {
             buildChain(tile);
             buildChain(tile.flip());
         }
@@ -25,10 +25,10 @@ public class BruteForceResolver implements Resolver {
         return result;
     }
 
-    private void buildChain(Tile current) {
+    private void buildChain(AbstractTile current) {
         current.setBusy(true);
         temp.add(current);
-        for (Tile tile : origin) {
+        for (AbstractTile tile : origin) {
             if (!tile.isBusy()) {
                 int suits = current.isSuits(tile);
                 if (suits == 1) {
@@ -39,10 +39,10 @@ public class BruteForceResolver implements Resolver {
                 iteration++;
             }
         }
-        current.resetState();
+        current.setBusy(false);
          System.out.println(temp);
         if(temp.size() == origin.size()){
-            result.add(new ArrayList<Tile>(temp));
+            result.add(new ArrayList<AbstractTile>(temp));
         }
 
         temp.remove(current);

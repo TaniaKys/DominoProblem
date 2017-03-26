@@ -1,6 +1,6 @@
-package com.starr.domino;
+package com.starr.domino.tile;
 
-public class Tile implements Comparable<Tile>{
+public class Tile extends AbstractTile implements Comparable<Tile>{
 
     private int left;
     private int right;
@@ -71,7 +71,7 @@ public class Tile implements Comparable<Tile>{
         return 0;
     }
 
-    public int isSuits(Tile other) {
+    public int isSuits(AbstractTile other) {
         if (right == other.getLeft()) {
             return 1;
         }
