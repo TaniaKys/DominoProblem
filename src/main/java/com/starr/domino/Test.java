@@ -2,8 +2,7 @@ package com.starr.domino;
 
 
 import com.starr.domino.resolver.BruteForceResolver;
-import com.starr.domino.service.TileService;
-import com.starr.domino.service.TileServiceImpl;
+import com.starr.domino.set.DominoSet;
 import com.starr.domino.tile.Tile;
 
 import java.util.*;
@@ -16,9 +15,8 @@ public class Test {
     //TODO: read from args
     //TODO: check for count (28 allowed)
     public static void main(String[] args) {
-        TileService service = new TileServiceImpl();
-        List<Tile> tiles = service.generateDominoSet(MIN, MAX);
-        System.out.println(tiles);
+        DominoSet dominoSet = new DominoSet(MIN, MAX);
+        System.out.println(dominoSet);
 
         ConsoleReader consoleReader = new ConsoleReader();
         //int count = consoleReader.readCount();

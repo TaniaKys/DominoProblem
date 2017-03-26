@@ -22,6 +22,7 @@ public class BruteForceResolver implements Resolver {
             buildChain(tile);
             buildChain(tile.flip());
         }
+        //TODO: delete
         System.out.println(iteration);
         return result;
     }
@@ -41,6 +42,7 @@ public class BruteForceResolver implements Resolver {
             }
         }
         current.setBusy(true);
+        //TODO: delete
         System.out.println(temp);
         if(temp.size() > result.size()){
             result = new ArrayList<Tile>(temp);
