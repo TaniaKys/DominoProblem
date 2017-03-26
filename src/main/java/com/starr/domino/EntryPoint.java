@@ -1,11 +1,15 @@
 package com.starr.domino;
 
 
+import com.starr.domino.reader.CountReader;
+import com.starr.domino.resolver.BruteForceResolver;
+
 public class EntryPoint {
 
     public static void main(String[] args) {
-        DominoApplication app = new DominoApplication();
-        app.run((new CountReader()).readCount(args));
+        CountReader countReader = new CountReader();
+        DominoApplication app = new DominoApplication(new BruteForceResolver());
+        app.run((countReader).readCount(args));
     }
 
 }

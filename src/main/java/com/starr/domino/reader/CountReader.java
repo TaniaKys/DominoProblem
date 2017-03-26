@@ -1,4 +1,4 @@
-package com.starr.domino;
+package com.starr.domino.reader;
 
 
 import com.starr.domino.util.Dots;
@@ -9,8 +9,8 @@ import java.io.InputStreamReader;
 public class CountReader {
 
     private class InvalidRangeException extends Exception {
-        public InvalidRangeException() {
-            super("Number must be in range [1, " + maxCount+"]");
+        InvalidRangeException() {
+            super("Number must be in range [1, " + maxCount + "]");
         }
     }
 
@@ -27,7 +27,7 @@ public class CountReader {
         System.out.println("Enter number of dominoes: ");
         try {
             count = Integer.parseInt(consoleReader.readLine());
-            if(!inRange(count)){
+            if (!inRange(count)) {
                 throw new InvalidRangeException();
             }
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class CountReader {
         int count;
         try {
             count = Integer.parseInt(arg[0]);
-            if(!inRange(count)){
+            if (!inRange(count)) {
                 throw new InvalidRangeException();
             }
             System.out.println("Number of dominoes: " + count);
@@ -57,7 +57,7 @@ public class CountReader {
         return ((max * max + (3 * max) + 2) / 2);
     }
 
-    private boolean inRange(int count){
+    private boolean inRange(int count) {
         return count > 0 || count <= maxCount;
     }
 }
