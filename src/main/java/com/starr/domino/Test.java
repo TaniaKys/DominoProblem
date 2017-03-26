@@ -1,34 +1,39 @@
 package com.starr.domino;
 
 
+import com.starr.domino.service.TileService;
+import com.starr.domino.service.TileServiceImpl;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Test {
 
     static final int MIN = 0;
     static final int MAX = 6;
 
+    //TODO: read from args
+    //TODO: check for count (28 allowed)
     public static void main(String[] args) {
-        Set<Tile> tiles = generateDominoSet();
-        printDominoSet(tiles);
-        System.out.println(tiles.size());
+        TileService service = new TileServiceImpl();
+        List<Tile> tiles = service.generateDominoSet(MIN, MAX);
+        System.out.println(tiles);
+
+        ConsoleReader consoleReader = new ConsoleReader();
+        int count = consoleReader.readCount();
+
+
+        List<Tile> randomDominoes = service.getRandomDominoes(tiles, count);
+        System.out.println(randomDominoes);
+
+        DominoMatrix matrix = new DominoMatrix(MIN, MAX);
+        matrix.fillMatrix(randomDominoes);
+        matrix.printMatrix();
+
+        matrix.fillList(randomDominoes);
+        System.out.println(matrix.getMap());
     }
 
-   static Set<Tile> generateDominoSet() {
-        Set<Tile> set = new HashSet<Tile>();
-        for (int left = MIN; left <= MAX; left++) {
-            for (int right = MIN; right <= MAX; right++) {
-                set.add(new Tile(left, right));
-            }
-        }
-        return set;
-    }
 
-    static void printDominoSet(Set<Tile> set) {
-        for (Tile tile : set) {
-            System.out.print(tile + " ");
-        }
-    }
+
+
 }

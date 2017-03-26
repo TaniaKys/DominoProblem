@@ -1,6 +1,6 @@
 package com.starr.domino;
 
-public class Tile implements Comparable{
+public class Tile implements Comparable<Tile>{
 
     private int left;
     private int right;
@@ -46,8 +46,20 @@ public class Tile implements Comparable{
         return "["+left+"|"+right+"]";
     }
 
-    public int compareTo(Object o) {
-
+    public int compareTo(Tile o) {
+        if(left > o.left){
+            return 1;
+        }
+        if(left < o.left){
+            return -1;
+        }
+        if(right > o.right){
+            return 1;
+        }
+        if(right < o.right){
+            return -1;
+        }
         return 0;
     }
+
 }
