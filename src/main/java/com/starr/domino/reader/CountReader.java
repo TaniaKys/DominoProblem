@@ -16,8 +16,10 @@ public class CountReader {
 
     private BufferedReader consoleReader;
     private int maxCount;
+    private String[] args;
 
-    public CountReader() {
+    public CountReader(String[] args) {
+        this.args = args;
         consoleReader = new BufferedReader(new InputStreamReader(System.in));
         maxCount = calculateMaxCount();
     }
@@ -37,10 +39,10 @@ public class CountReader {
         return count;
     }
 
-    public int readCount(String[] arg) {
+    public int readCount() {
         int count;
         try {
-            count = Integer.parseInt(arg[0]);
+            count = Integer.parseInt(args[0]);
             if (!inRange(count)) {
                 throw new InvalidRangeException();
             }
@@ -52,6 +54,7 @@ public class CountReader {
         return count;
     }
 
+    //TODO: refactor - do not use Dots class
     private int calculateMaxCount() {
         int max = Dots.MAX - Dots.MIN;
         return ((max * max + (3 * max) + 2) / 2);

@@ -11,9 +11,12 @@ public class BruteForceResolver implements Resolver {
     private List<Tile> temp = new ArrayList<Tile>();
     private List<Tile> result = new ArrayList<Tile>();
 
+    //TODO: delete
     private int iteration = 0;
 
     public List<Tile> resolve(List<Tile> list) {
+        temp.clear();
+        result.clear();
         if(list == null){
             return result;
         }
@@ -24,7 +27,6 @@ public class BruteForceResolver implements Resolver {
         }
         //TODO: delete
         System.out.println(iteration);
-        //TODO: print unused dominoes
         return result;
     }
 
