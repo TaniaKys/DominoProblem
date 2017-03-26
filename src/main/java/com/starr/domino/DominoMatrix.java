@@ -22,7 +22,6 @@ public class DominoMatrix {
         }
     }
 
-
     //-- adjacency matrix --
     public void fillMatrix(List<Tile> list) {
         for (Tile tile : list) {

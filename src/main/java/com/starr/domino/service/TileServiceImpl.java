@@ -1,6 +1,5 @@
 package com.starr.domino.service;
 
-import com.starr.domino.tile.AbstractTile;
 import com.starr.domino.tile.Tile;
 
 import java.util.ArrayList;
@@ -10,8 +9,8 @@ import java.util.List;
 public class TileServiceImpl implements TileService {
 
 
-    public List<AbstractTile> generateDominoSet(int min, int max) {
-        List<AbstractTile> set = new ArrayList<AbstractTile>();
+    public List<Tile> generateDominoSet(int min, int max) {
+        List<Tile> set = new ArrayList<Tile>();
         for (int left = min; left <= max; left++) {
             for (int right = left; right <= max; right++) {
                 set.add(new Tile(left, right));
@@ -20,8 +19,8 @@ public class TileServiceImpl implements TileService {
         return set;
     }
 
-    public List<AbstractTile> getRandomDominoes(List<AbstractTile> set, int count) {
-        List<AbstractTile> randSet = new ArrayList<AbstractTile>(set);
+    public List<Tile> getRandomDominoes(List<Tile> set, int count) {
+        List<Tile> randSet = new ArrayList<Tile>(set);
         Collections.shuffle(randSet);
         return randSet.subList(0, count);
     }
