@@ -1,11 +1,11 @@
 package com.starr.domino.xtrash.test;
 
 
-import com.starr.domino.tile.AbstractTile;
+import com.starr.domino.model.AbstractTile;
 import com.starr.domino.xtrash.DominoMatrix;
 import com.starr.domino.resolver.BruteForceResolver;
-import com.starr.domino.set.DominoSet;
-import com.starr.domino.tile.Tile;
+import com.starr.domino.model.DominoSet;
+import com.starr.domino.model.Tile;
 
 import java.util.*;
 

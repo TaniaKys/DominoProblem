@@ -1,8 +1,5 @@
-package com.starr.domino.set;
+package com.starr.domino.model;
 
-
-import com.starr.domino.tile.AbstractTile;
-import com.starr.domino.tile.Tile;
 
 import java.util.ArrayList;
 import java.util.Collections;

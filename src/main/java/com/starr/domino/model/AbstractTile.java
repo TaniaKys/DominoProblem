@@ -1,4 +1,4 @@
-package com.starr.domino.tile;
+package com.starr.domino.model;
 
 /**
  * AbstractClass for domino tile models

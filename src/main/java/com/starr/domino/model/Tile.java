@@ -1,4 +1,4 @@
-package com.starr.domino.tile;
+package com.starr.domino.model;
 
 /**
  * Class for reading domino counts from program argument or (if argument is invalid or not exist) via command line interface

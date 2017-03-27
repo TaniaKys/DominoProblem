@@ -2,9 +2,9 @@ package com.starr.domino;
 
 
 import com.starr.domino.resolver.IResolver;
-import com.starr.domino.set.AbstractDominoSet;
-import com.starr.domino.set.DominoSet;
-import com.starr.domino.tile.AbstractTile;
+import com.starr.domino.model.AbstractDominoSet;
+import com.starr.domino.model.DominoSet;
+import com.starr.domino.model.AbstractTile;
 import com.starr.domino.util.DominoConfig;
 
 import java.util.ArrayList;

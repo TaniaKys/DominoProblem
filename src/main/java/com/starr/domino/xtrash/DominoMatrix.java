@@ -1,7 +1,7 @@
 package com.starr.domino.xtrash;
 
 
-import com.starr.domino.tile.Tile;
+import com.starr.domino.model.Tile;
 
 import java.util.*;
 

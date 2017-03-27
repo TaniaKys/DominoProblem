@@ -1,7 +1,7 @@
 package com.starr.domino.resolver;
 
 
-import com.starr.domino.tile.AbstractTile;
+import com.starr.domino.model.AbstractTile;
 
 import java.util.*;
 
