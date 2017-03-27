@@ -18,9 +18,6 @@ public class BruteForceResolver implements IResolver {
     private List<AbstractTile> temp = new ArrayList<AbstractTile>();
     private List<AbstractTile> result = new ArrayList<AbstractTile>();
 
-    //TODO: delete
-    private int iteration = 0;
-
     public List<AbstractTile> resolve(List<AbstractTile> list) {
         temp.clear();
         result.clear();
@@ -32,8 +29,6 @@ public class BruteForceResolver implements IResolver {
             buildChain(tile);
             buildChain(tile.flip());
         }
-        //TODO: delete
-        System.out.println(iteration);
         return result;
     }
 
@@ -57,17 +52,13 @@ public class BruteForceResolver implements IResolver {
                 } else if (connection.equals(AbstractTile.Connection.WITH_FLIP)) {
                     buildChain(tile.flip());
                 }
-                iteration++;
             }
         }
-        //TODO: delete
-        System.out.println(temp);
         if (temp.size() > result.size()) {
             result = new ArrayList<AbstractTile>(temp);
         }
         current.setBusy(false);
         temp.remove(current);
-
     }
 
 

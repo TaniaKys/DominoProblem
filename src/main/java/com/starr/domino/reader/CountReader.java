@@ -1,6 +1,10 @@
 package com.starr.domino.reader;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -10,6 +14,11 @@ import java.io.InputStreamReader;
  * @author Tania Kysla
  */
 public class CountReader implements ICountReader {
+
+    /**
+     * Slf4j logger
+     */
+    private final Logger logger = LoggerFactory.getLogger(CountReader.class.getSimpleName());
 
     /**
      * Invalid range of domino count exception
@@ -43,7 +52,7 @@ public class CountReader implements ICountReader {
                 throw new InvalidRangeException();
             }
         } catch (Exception e) {
-            System.out.println(e.toString() + ". Try again.");
+            logger.error(e.toString() + ". Try again.");
             count = readCountFromConsole();
         }
         return count;
@@ -57,9 +66,9 @@ public class CountReader implements ICountReader {
             if (!isOutOfRange(count)) {
                 throw new InvalidRangeException();
             }
-            System.out.println("Number of dominoes: " + count);
+            logger.info("Number of dominoes: " + count);
         } catch (Exception e) {
-            System.out.println("Argument parameter is invalid or missing. Console interface is running...");
+            logger.info("Argument parameter is invalid or missing. Console interface is running...");
             count = readCountFromConsole();
         }
         return count;
