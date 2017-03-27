@@ -1,9 +1,20 @@
 package com.starr.domino.tile;
 
+/**
+ * Class for reading domino counts from program argument or (if argument is invalid or not exist) via command line interface
+ *
+ * @author Tania Kysla
+ */
 public class Tile extends AbstractTile implements Comparable<Tile> {
 
     private boolean isFlipped;
 
+    /**
+     * Creates domino tile entity. Left side is always lower or equals to right side
+     *
+     * @param left  dots value of left side
+     * @param right dots value of right side
+     */
     public Tile(int left, int right) {
         super(left, right);
         if (this.left > this.right) {
@@ -13,21 +24,22 @@ public class Tile extends AbstractTile implements Comparable<Tile> {
         }
     }
 
+
+    /**
+     * Private copy constructor
+     *
+     * @param tile Domino tile entity
+     */
     private Tile(Tile tile) {
         super(tile.left, tile.right);
         this.isFlipped = tile.isFlipped;
     }
 
+    /**
+     * @return flipped state
+     */
     public boolean isFlipped() {
         return isFlipped;
-    }
-
-    public boolean isBusy() {
-        return isBusy;
-    }
-
-    public void setBusy(boolean busy) {
-        isBusy = busy;
     }
 
     @Override

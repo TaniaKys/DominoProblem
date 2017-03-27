@@ -1,11 +1,14 @@
 package com.starr.domino.reader;
 
 
-import com.starr.domino.util.Dots;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * Class for reading domino counts from program argument or (if argument is invalid or not exist) via command line interface
+ *
+ * @author Tania Kysla
+ */
 public class CountReader implements ICountReader {
 
     private class InvalidRangeException extends Exception {
@@ -18,18 +21,22 @@ public class CountReader implements ICountReader {
     private int maxCount;
     private String[] args;
 
-    public CountReader(String[] arg) {
+    /**
+     * Creates program arguments reader (if arguments are invalid - uses command line)
+     *
+     * @param args
+     */
+    public CountReader(String[] args) {
         this.args = args;
         consoleReader = new BufferedReader(new InputStreamReader(System.in));
-        maxCount = calculateMaxCount();
     }
 
     private int readCountFromConsole() {
         int count;
         System.out.println("Enter number of dominoes: ");
         try {
-            count = Integer.parseInt(consoleReader.readLine());
-            if (!inRange(count)) {
+            count = Integer.parseInt(consoleReader.readLine().trim());
+            if (!isOutOfRange(count)) {
                 throw new InvalidRangeException();
             }
         } catch (Exception e) {
@@ -39,11 +46,12 @@ public class CountReader implements ICountReader {
         return count;
     }
 
-    public int readCount() {
+    public int readCount(int countLimit) {
+        maxCount = countLimit;
         int count;
         try {
-            count = Integer.parseInt(args[0]);
-            if (!inRange(count)) {
+            count = Integer.parseInt(args[0].trim());
+            if (!isOutOfRange(count)) {
                 throw new InvalidRangeException();
             }
             System.out.println("Number of dominoes: " + count);
@@ -54,13 +62,7 @@ public class CountReader implements ICountReader {
         return count;
     }
 
-    //TODO: refactor - do not use Dots class
-    private int calculateMaxCount() {
-        int max = Dots.MAX - Dots.MIN;
-        return ((max * max + (3 * max) + 2) / 2);
-    }
-
-    private boolean inRange(int count) {
+    private boolean isOutOfRange(int count) {
         return count > 0 || count <= maxCount;
     }
 }

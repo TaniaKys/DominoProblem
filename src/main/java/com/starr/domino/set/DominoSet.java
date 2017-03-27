@@ -8,8 +8,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class for storage domino set
+ *
+ * @author Tania Kysla
+ */
 public class DominoSet extends AbstractDominoSet {
 
+    /**
+     * Creates domino tiles set
+     *
+     * @param min minimal value of dots
+     * @param max maximal value of dots
+     */
     public DominoSet(int min, int max) {
         set = generateSet(min, max);
     }
@@ -30,14 +41,17 @@ public class DominoSet extends AbstractDominoSet {
         return randSet.subList(0, count);
     }
 
-    public int getSize(){
+    /**
+     * @return size of set
+     */
+    public int getSize() {
         return set.size();
     }
 
     @Override
     public String toString() {
         return "DominoSet{" +
-                     set +
+                set +
                 '}';
     }
 }
