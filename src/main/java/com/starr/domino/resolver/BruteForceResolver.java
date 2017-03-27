@@ -5,7 +5,7 @@ import com.starr.domino.tile.AbstractTile;
 
 import java.util.*;
 
-public class BruteForceResolver implements Resolver {
+public class BruteForceResolver implements IResolver {
 
     private List<AbstractTile> origin;
     private List<AbstractTile> temp = new ArrayList<AbstractTile>();

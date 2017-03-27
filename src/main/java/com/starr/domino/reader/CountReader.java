@@ -6,7 +6,7 @@ import com.starr.domino.util.Dots;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class CountReader {
+public class CountReader implements ICountReader {
 
     private class InvalidRangeException extends Exception {
         InvalidRangeException() {
@@ -18,7 +18,7 @@ public class CountReader {
     private int maxCount;
     private String[] args;
 
-    public CountReader(String[] args) {
+    public CountReader(String[] arg) {
         this.args = args;
         consoleReader = new BufferedReader(new InputStreamReader(System.in));
         maxCount = calculateMaxCount();
