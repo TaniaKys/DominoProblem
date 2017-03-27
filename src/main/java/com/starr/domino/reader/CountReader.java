@@ -11,6 +11,9 @@ import java.io.InputStreamReader;
  */
 public class CountReader implements ICountReader {
 
+    /**
+     * Invalid range of domino count exception
+     */
     private class InvalidRangeException extends Exception {
         InvalidRangeException() {
             super("Number must be in range [1, " + maxCount + "]");
