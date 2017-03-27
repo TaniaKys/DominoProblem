@@ -1,7 +1,6 @@
 package com.starr.domino;
 
 
-import com.starr.domino.reader.CountReader;
 import com.starr.domino.resolver.IResolver;
 import com.starr.domino.model.AbstractDominoSet;
 import com.starr.domino.model.DominoSet;
@@ -41,12 +40,16 @@ public class DominoApplication {
      */
     public void run(int count) {
         logger.info("Running app...");
+
         AbstractDominoSet dominoSet = new DominoSet(DominoConfig.MIN, DominoConfig.MAX);
-        logger.info(""+dominoSet);
+        logger.info("" + dominoSet);
+
         List<AbstractTile> randomDominoes = dominoSet.getRandomAmount(count);
         System.out.println("Selected set: " + randomDominoes);
+
         List<AbstractTile> result = resolver.resolve(randomDominoes);
         System.out.println("Result: " + result);
+
         List<AbstractTile> outOfChain = new ArrayList<AbstractTile>();
         for (AbstractTile tile : randomDominoes) {
             if (!result.contains(tile)) {

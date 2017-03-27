@@ -5,7 +5,7 @@ package com.starr.domino.model;
  *
  * @author Tania Kysla
  */
-public abstract class AbstractTile {
+public abstract class AbstractTile implements Comparable<AbstractTile>{
 
     /**
      * Enum class which described possible connections ways between domino tiles. States:

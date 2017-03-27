@@ -5,7 +5,7 @@ package com.starr.domino.model;
  *
  * @author Tania Kysla
  */
-public class Tile extends AbstractTile implements Comparable<Tile> {
+public class Tile extends AbstractTile {
 
     private boolean isFlipped;
 
@@ -23,7 +23,6 @@ public class Tile extends AbstractTile implements Comparable<Tile> {
             this.right = tmp;
         }
     }
-
 
     /**
      * Private copy constructor
@@ -64,7 +63,7 @@ public class Tile extends AbstractTile implements Comparable<Tile> {
         return new Tile(this);
     }
 
-    public int compareTo(Tile o) {
+    public int compareTo(AbstractTile o) {
         if (left > o.left) {
             return 1;
         }
