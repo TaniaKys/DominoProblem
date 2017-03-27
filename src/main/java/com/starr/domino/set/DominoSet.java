@@ -1,22 +1,21 @@
 package com.starr.domino.set;
 
 
+import com.starr.domino.tile.AbstractTile;
 import com.starr.domino.tile.Tile;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DominoSet {
-
-    private List<Tile> set;
+public class DominoSet extends AbstractDominoSet {
 
     public DominoSet(int min, int max) {
         set = generateSet(min, max);
     }
 
-    private List<Tile> generateSet(int min, int max) {
-        List<Tile> set = new ArrayList<Tile>();
+    protected List<AbstractTile> generateSet(int min, int max) {
+        List<AbstractTile> set = new ArrayList<AbstractTile>();
         for (int left = min; left <= max; left++) {
             for (int right = left; right <= max; right++) {
                 set.add(new Tile(left, right));
@@ -25,8 +24,8 @@ public class DominoSet {
         return set;
     }
 
-    public List<Tile> getRandomDominoes(int count) {
-        List<Tile> randSet = new ArrayList<Tile>(set);
+    public List<AbstractTile> getRandomAmount(int count) {
+        List<AbstractTile> randSet = new ArrayList<AbstractTile>(set);
         Collections.shuffle(randSet);
         return randSet.subList(0, count);
     }

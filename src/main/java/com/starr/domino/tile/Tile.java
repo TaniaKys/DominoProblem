@@ -1,41 +1,21 @@
 package com.starr.domino.tile;
 
-public class Tile implements Comparable<Tile> {
+public class Tile extends AbstractTile implements Comparable<Tile> {
 
-    public enum Connection {
-        WITH_FLIP,
-        WITHOUT_FLIP,
-        NONE
-    }
-
-    private int left;
-    private int right;
     private boolean isFlipped;
-    private boolean isBusy;
 
     public Tile(int left, int right) {
-        if (left > right) {
-            int tmp = left;
-            left = right;
-            right = tmp;
+        super(left, right);
+        if (this.left > this.right) {
+            int tmp = this.left;
+            this.left = this.right;
+            this.right = tmp;
         }
-        this.right = right;
-        this.left = left;
     }
 
-    public Tile(Tile tile) {
-        this.left = tile.left;
-        this.right = tile.right;
+    private Tile(Tile tile) {
+        super(tile.left, tile.right);
         this.isFlipped = tile.isFlipped;
-        this.isBusy = tile.isBusy;
-    }
-
-    public int getRight() {
-        return right;
-    }
-
-    public int getLeft() {
-        return left;
     }
 
     public boolean isFlipped() {
@@ -50,22 +30,26 @@ public class Tile implements Comparable<Tile> {
         isBusy = busy;
     }
 
+    @Override
     public Tile flip() {
-        int tmp = left;
-        left = right;
-        right = tmp;
+        super.flip();
         isFlipped = !isFlipped;
         return this;
     }
 
+    @Override
     public void resetState() {
+        super.resetState();
         if (left > right) {
             int tmp = left;
             left = right;
             right = tmp;
         }
         isFlipped = false;
-        isBusy = false;
+    }
+
+    public Tile getCopy() {
+        return new Tile(this);
     }
 
     public int compareTo(Tile o) {
@@ -82,16 +66,6 @@ public class Tile implements Comparable<Tile> {
             return -1;
         }
         return 0;
-    }
-
-    public Connection connectedWith(Tile other) {
-        if (right == other.getLeft()) {
-            return Connection.WITHOUT_FLIP;
-        }
-        if (right == other.getRight()) {
-            return Connection.WITH_FLIP;
-        }
-        return Connection.NONE;
     }
 
     @Override

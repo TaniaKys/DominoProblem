@@ -1,6 +1,7 @@
 package com.starr.domino.xtrash.test;
 
 
+import com.starr.domino.tile.AbstractTile;
 import com.starr.domino.xtrash.DominoMatrix;
 import com.starr.domino.resolver.BruteForceResolver;
 import com.starr.domino.set.DominoSet;
@@ -34,7 +35,7 @@ public class Test {
         //System.out.println(matrix.getMap());
 
 
-        List<Tile> testList = new ArrayList<Tile>();
+        List<AbstractTile> testList = new ArrayList<AbstractTile>();
         testList.add(new Tile(2, 4));
         testList.add(new Tile(5, 6));
         testList.add(new Tile(2, 5));
@@ -43,7 +44,7 @@ public class Test {
 
         //System.out.println(testList);
 
-        List<Tile> testList2 = new ArrayList<Tile>();
+        List<AbstractTile> testList2 = new ArrayList<AbstractTile>();
         testList2.add(new Tile(1, 2));
         testList2.add(new Tile(2, 3));
         testList2.add(new Tile(1, 3));
@@ -51,7 +52,7 @@ public class Test {
         System.out.println(testList2);
 
         BruteForceResolver bruteForceResolver = new BruteForceResolver();
-        List<Tile> result = bruteForceResolver.resolve(testList2);
+        List<AbstractTile> result = bruteForceResolver.resolve(testList2);
         System.out.println("RESULT");
         System.out.println(result);
     }

@@ -1,27 +1,27 @@
 package com.starr.domino.resolver;
 
 
-import com.starr.domino.tile.Tile;
+import com.starr.domino.tile.AbstractTile;
 
 import java.util.*;
 
 public class BruteForceResolver implements Resolver {
 
-    private List<Tile> origin;
-    private List<Tile> temp = new ArrayList<Tile>();
-    private List<Tile> result = new ArrayList<Tile>();
+    private List<AbstractTile> origin;
+    private List<AbstractTile> temp = new ArrayList<AbstractTile>();
+    private List<AbstractTile> result = new ArrayList<AbstractTile>();
 
     //TODO: delete
     private int iteration = 0;
 
-    public List<Tile> resolve(List<Tile> list) {
+    public List<AbstractTile> resolve(List<AbstractTile> list) {
         temp.clear();
         result.clear();
         if(list == null){
             return result;
         }
         origin = list;
-        for (Tile tile : origin) {
+        for (AbstractTile tile : origin) {
             buildChain(tile);
             buildChain(tile.flip());
         }
@@ -30,15 +30,15 @@ public class BruteForceResolver implements Resolver {
         return result;
     }
 
-    private void buildChain(Tile current) {
+    private void buildChain(AbstractTile current) {
         current.setBusy(true);
-        temp.add(new Tile(current));
-        for (Tile tile : origin) {
+        temp.add(current.getCopy());
+        for (AbstractTile tile : origin) {
             if (!tile.isBusy()) {
-                Tile.Connection connection = current.connectedWith(tile);
-                if (connection.equals(Tile.Connection.WITHOUT_FLIP)) {
+                AbstractTile.Connection connection = current.connectedWith(tile);
+                if (connection.equals(AbstractTile.Connection.WITHOUT_FLIP)) {
                     buildChain(tile);
-                } else if (connection.equals(Tile.Connection.WITH_FLIP)) {
+                } else if (connection.equals(AbstractTile.Connection.WITH_FLIP)) {
                     buildChain(tile.flip());
                 }
                 iteration++;
@@ -47,7 +47,7 @@ public class BruteForceResolver implements Resolver {
         //TODO: delete
         System.out.println(temp);
         if(temp.size() > result.size()){
-            result = new ArrayList<Tile>(temp);
+            result = new ArrayList<AbstractTile>(temp);
         }
         current.setBusy(false);
         temp.remove(current);

@@ -1,10 +1,10 @@
 package com.starr.domino.resolver;
 
-import com.starr.domino.tile.Tile;
+import com.starr.domino.tile.AbstractTile;
 
 import java.util.List;
 
 public interface Resolver {
 
-    List<Tile> resolve(List<Tile> list);
+    List<AbstractTile> resolve(List<AbstractTile> list);
 }
