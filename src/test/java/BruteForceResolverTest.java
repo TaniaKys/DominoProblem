@@ -79,5 +79,4 @@ public class BruteForceResolverTest {
         logger.info("Expected result is "+expectedResult+". Longest chain size = " + result.size());
         assertEquals(expectedResult+" element chain:", expectedResult, result.size());
     }
-
 }

@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Main application for solving domino problem
+ * @author Tania Kysla
  */
 public class DominoApplication {
 
